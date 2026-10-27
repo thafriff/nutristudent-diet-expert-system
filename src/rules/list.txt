@@ -1,0 +1,278 @@
+# Full Rule List
+
+## Base Rules (19)
+
+R6: (health_condition == 'High BP' OR health_condition == 'High Cholesterol') -> Health_Advisory: 'Consult Doctor'
+R7: (BMI_Category == 'Obese' OR age > 40) -> Health_Advisory: 'Caution'
+R13: (stress_level == 'High') -> Diet_Plan: 'Stress-Control'
+R8: (BMI_Category == 'Underweight' AND goal == 'Gain') -> Diet_Plan: 'Calorie-Surplus'
+R8b: (goal == 'Gain' OR (BMI_Category == 'Underweight' AND age < 30)) -> Diet_Plan: 'Calorie-Surplus'
+R9: ((BMI_Category == 'Overweight' OR BMI_Category == 'Obese') AND goal == 'Lose') -> Diet_Plan: 'Calorie-Deficit'
+R9b: (goal == 'Lose' OR health_condition == 'High Cholesterol') -> Diet_Plan: 'Calorie-Deficit'
+R10: (goal == 'Maintain' AND exercise_level == 'Rarely' AND age < 30) -> Diet_Plan: 'Balanced'
+R11: (diet_restriction == 'Vegan' OR diet_restriction == 'Vegetarian') -> Diet_Plan: 'Plant-Based'
+R12: (diet_restriction == 'Allergy') -> Diet_Plan: 'Allergy-Safe'
+R14: (budget_level == 'Low') -> Diet_Plan: 'Budget-Friendly'
+R15: (cooking_facility == 'No Kitchen') -> Food_Type: 'No-Cook Meals'
+R16: (diet_restriction == 'Vegan') -> Food_Type: 'Plant-Based'
+R17: (budget_level == 'Low') -> Food_Type: 'Low-Budget Meals'
+R16b: ((diet_restriction == 'Vegan' OR diet_restriction == 'Vegetarian') AND budget_level == 'Low') -> Food_Type: 'Plant-Based'
+R19: (Diet_Plan == 'Calorie-Surplus') -> Meal_Portion: 'Larger Meals'
+R20: (Diet_Plan == 'Calorie-Deficit' OR health_condition == 'High BP') -> Meal_Portion: 'Small Frequent Meals'
+R21: (Diet_Plan == 'Balanced') -> Meal_Portion: 'Normal Meals'
+R22: (BMI_Category == 'Normal' AND stress_level == 'Low') -> Meal_Portion: 'Normal Meals'
+
+## Generated Rules (252)
+
+R0001: (results.BMI_Category === 'Underweight' && inputs.goal === 'Maintain') -> {"Diet_Plan":"Balanced"}
+R0002: (results.BMI_Category === 'Underweight' && inputs.goal === 'Gain') -> {"Diet_Plan":"Calorie-Surplus"}
+R0003: (results.BMI_Category === 'Underweight' && inputs.goal === 'Lose') -> {"Diet_Plan":"Balanced"}
+R0004: (results.BMI_Category === 'Normal' && inputs.goal === 'Maintain') -> {"Diet_Plan":"Balanced"}
+R0005: (results.BMI_Category === 'Normal' && inputs.goal === 'Gain') -> {"Diet_Plan":"Balanced"}
+R0006: (results.BMI_Category === 'Normal' && inputs.goal === 'Lose') -> {"Diet_Plan":"Balanced"}
+R0007: (results.BMI_Category === 'Overweight' && inputs.goal === 'Maintain') -> {"Diet_Plan":"Balanced"}
+R0008: (results.BMI_Category === 'Overweight' && inputs.goal === 'Gain') -> {"Diet_Plan":"Balanced"}
+R0009: (results.BMI_Category === 'Overweight' && inputs.goal === 'Lose') -> {"Diet_Plan":"Balanced"}
+R0010: (results.BMI_Category === 'Obese' && inputs.goal === 'Maintain') -> {"Diet_Plan":"Balanced"}
+R0011: (results.BMI_Category === 'Obese' && inputs.goal === 'Gain') -> {"Diet_Plan":"Balanced"}
+R0012: (results.BMI_Category === 'Obese' && inputs.goal === 'Lose') -> {"Diet_Plan":"Calorie-Deficit"}
+R0013: (inputs.age < 25 && inputs.stress_level === 'High') -> {"Diet_Plan":"Stress-Control"}
+R0014: (inputs.age >= 25 && inputs.age <= 40 && inputs.stress_level === 'Low') -> {"Meal_Portion":"Normal Meals"}
+R0015: (inputs.age >= 25 && inputs.age <= 40 && inputs.stress_level === 'High') -> {"Diet_Plan":"Stress-Control"}
+R0016: (inputs.age > 40 && inputs.stress_level === 'High') -> {"Diet_Plan":"Stress-Control"}
+R0017: (inputs.diet_restriction === 'None' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0018: (inputs.diet_restriction === 'Vegan' && inputs.budget_level === 'Low') -> {"Food_Type":"Plant-Based","Diet_Plan":"Plant-Based"}
+R0019: (inputs.diet_restriction === 'Vegan' && inputs.budget_level === 'Medium') -> {"Food_Type":"Plant-Based","Diet_Plan":"Plant-Based"}
+R0020: (inputs.diet_restriction === 'Vegan' && inputs.budget_level === 'High') -> {"Food_Type":"Plant-Based","Diet_Plan":"Plant-Based"}
+R0021: (inputs.diet_restriction === 'Vegetarian' && inputs.budget_level === 'Low') -> {"Food_Type":"Plant-Based","Diet_Plan":"Plant-Based"}
+R0022: (inputs.diet_restriction === 'Vegetarian' && inputs.budget_level === 'Medium') -> {"Food_Type":"Plant-Based","Diet_Plan":"Plant-Based"}
+R0023: (inputs.diet_restriction === 'Vegetarian' && inputs.budget_level === 'High') -> {"Food_Type":"Plant-Based","Diet_Plan":"Plant-Based"}
+R0024: (inputs.diet_restriction === 'Allergy' && inputs.budget_level === 'Low') -> {"Diet_Plan":"Allergy-Safe","Food_Type":"Low-Budget Meals"}
+R0025: (inputs.diet_restriction === 'Allergy' && inputs.budget_level === 'Medium') -> {"Diet_Plan":"Allergy-Safe"}
+R0026: (inputs.diet_restriction === 'Allergy' && inputs.budget_level === 'High') -> {"Diet_Plan":"Allergy-Safe"}
+R0027: (inputs.health_condition === 'None' && results.BMI_Category === 'Underweight') -> {"Meal_Portion":"Larger Meals"}
+R0028: (inputs.cooking_facility === 'No Kitchen' && inputs.budget_level === 'Low') -> {"Food_Type":"No-Cook Meals"}
+R0029: (inputs.cooking_facility === 'No Kitchen' && inputs.budget_level === 'Medium') -> {"Food_Type":"No-Cook Meals"}
+R0030: (inputs.cooking_facility === 'No Kitchen' && inputs.budget_level === 'High') -> {"Food_Type":"No-Cook Meals"}
+R0031: (inputs.cooking_facility === 'Shared Kitchen' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals"}
+R0032: (inputs.cooking_facility === 'Full Kitchen' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals"}
+R0033: (inputs.cooking_facility === 'Full Kitchen' && inputs.budget_level === 'High') -> {"Food_Type":"Variety of Healthy Meals"}
+R0034: (inputs.exercise_level === 'Rarely' && inputs.goal === 'Lose') -> {"Diet_Plan":"Calorie-Deficit"}
+R0035: (inputs.exercise_level === 'Active' && inputs.goal === 'Gain') -> {"Diet_Plan":"Calorie-Surplus"}
+R0036: (inputs.budget_level === 'Low' && inputs.stress_level === 'High') -> {"Diet_Plan":"Budget-Friendly"}
+R0037: (inputs.health_condition === 'High BP' && inputs.budget_level === 'Low') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0038: (inputs.diet_restriction === 'None' && inputs.exercise_level === 'Active') -> {"Diet_Plan":"Balanced"}
+R0039: (inputs.age < 18) -> {"Diet_Plan":"Balanced"}
+R0040: (inputs.stress_level === 'High') -> {"Diet_Plan":"Stress-Control"}
+R0041: (inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals"}
+R0042: (results.BMI_Category === 'Underweight' && inputs.goal === 'Gain' && inputs.exercise_level === 'Active') -> {"Diet_Plan":"Calorie-Surplus"}
+R0043: (results.BMI_Category === 'Obese' && inputs.goal === 'Lose' && inputs.exercise_level === 'Rarely') -> {"Diet_Plan":"Calorie-Deficit"}
+R0044: (inputs.age >= 25 && inputs.age <= 40 && inputs.budget_level === 'Low' && inputs.stress_level === 'High') -> {"Diet_Plan":"Stress-Control","Food_Type":"Low-Budget Meals"}
+R0045: (inputs.age > 40 && inputs.budget_level === 'Low' && inputs.stress_level === 'High') -> {"Diet_Plan":"Stress-Control","Food_Type":"Low-Budget Meals"}
+R0046: (inputs.health_condition === 'None' && results.BMI_Category === 'Underweight' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0047: (inputs.health_condition === 'High BP' && results.BMI_Category === 'Underweight' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0048: (inputs.health_condition === 'High BP' && results.BMI_Category === 'Obese' && inputs.cooking_facility === 'No Kitchen') -> {"Health_Advisory":"Caution","Meal_Portion":"Small Frequent Meals"}
+R0049: (inputs.health_condition === 'High BP' && results.BMI_Category === 'Obese' && inputs.cooking_facility === 'Shared Kitchen') -> {"Health_Advisory":"Caution","Meal_Portion":"Small Frequent Meals"}
+R0050: (inputs.health_condition === 'High BP' && results.BMI_Category === 'Obese' && inputs.cooking_facility === 'Full Kitchen') -> {"Health_Advisory":"Caution","Meal_Portion":"Small Frequent Meals"}
+R0051: (inputs.health_condition === 'High Cholesterol' && results.BMI_Category === 'Underweight' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0052: (inputs.health_condition === 'High Cholesterol' && results.BMI_Category === 'Obese' && inputs.cooking_facility === 'No Kitchen') -> {"Health_Advisory":"Caution","Meal_Portion":"Small Frequent Meals"}
+R0053: (inputs.health_condition === 'High Cholesterol' && results.BMI_Category === 'Obese' && inputs.cooking_facility === 'Shared Kitchen') -> {"Health_Advisory":"Caution","Meal_Portion":"Small Frequent Meals"}
+R0054: (inputs.health_condition === 'High Cholesterol' && results.BMI_Category === 'Obese' && inputs.cooking_facility === 'Full Kitchen') -> {"Health_Advisory":"Caution","Meal_Portion":"Small Frequent Meals"}
+R0055: (inputs.stress_level === 'High' && inputs.diet_restriction === 'Vegan' && inputs.exercise_level === 'Rarely') -> {"Diet_Plan":"Stress-Control Plant-Based","Food_Type":"Plant-Based"}
+R0056: (inputs.stress_level === 'High' && inputs.diet_restriction === 'Vegan' && inputs.exercise_level === 'Moderate') -> {"Diet_Plan":"Stress-Control Plant-Based","Food_Type":"Plant-Based"}
+R0057: (inputs.stress_level === 'High' && inputs.diet_restriction === 'Vegan' && inputs.exercise_level === 'Active') -> {"Diet_Plan":"Stress-Control Plant-Based","Food_Type":"Plant-Based"}
+R0058: (inputs.stress_level === 'High' && inputs.diet_restriction === 'Vegetarian' && inputs.exercise_level === 'Rarely') -> {"Diet_Plan":"Stress-Control Plant-Based","Food_Type":"Plant-Based"}
+R0059: (inputs.stress_level === 'High' && inputs.diet_restriction === 'Vegetarian' && inputs.exercise_level === 'Moderate') -> {"Diet_Plan":"Stress-Control Plant-Based","Food_Type":"Plant-Based"}
+R0060: (inputs.stress_level === 'High' && inputs.diet_restriction === 'Vegetarian' && inputs.exercise_level === 'Active') -> {"Diet_Plan":"Stress-Control Plant-Based","Food_Type":"Plant-Based"}
+R0061: (results.BMI_Category === 'Underweight' && inputs.goal === 'Gain' && inputs.budget_level === 'High') -> {"Diet_Plan":"Calorie-Surplus","Food_Type":"Variety of Healthy Meals"}
+R0062: (results.BMI_Category === 'Obese' && inputs.goal === 'Lose' && inputs.budget_level === 'Low') -> {"Diet_Plan":"Calorie-Deficit","Food_Type":"Low-Budget Meals"}
+R0063: (inputs.age < 25 && inputs.diet_restriction === 'Allergy' && inputs.budget_level === 'Low') -> {"Health_Advisory":"Caution","Food_Type":"Low-Budget Meals"}
+R0064: (inputs.age >= 25 && inputs.age <= 40 && inputs.diet_restriction === 'Allergy' && inputs.budget_level === 'Low') -> {"Health_Advisory":"Caution","Food_Type":"Low-Budget Meals"}
+R0065: (inputs.age > 40 && inputs.diet_restriction === 'Allergy' && inputs.budget_level === 'Low') -> {"Health_Advisory":"Caution","Food_Type":"Low-Budget Meals"}
+R0066: (inputs.goal === 'Gain' && inputs.cooking_facility === 'Full Kitchen' && inputs.budget_level === 'High') -> {"Diet_Plan":"Calorie-Surplus","Food_Type":"Variety of Healthy Meals"}
+R0067: (inputs.goal === 'Lose' && inputs.cooking_facility === 'No Kitchen' && inputs.budget_level === 'Low') -> {"Diet_Plan":"Calorie-Deficit","Food_Type":"No-Cook Meals"}
+R0068: (inputs.stress_level === 'High' && inputs.exercise_level === 'Rarely' && inputs.goal === 'Lose') -> {"Diet_Plan":"Stress-Control","Meal_Portion":"Small Frequent Meals"}
+R0069: (inputs.stress_level === 'High' && inputs.exercise_level === 'Active' && inputs.goal === 'Gain') -> {"Diet_Plan":"Calorie-Surplus"}
+R0070: (inputs.health_condition === 'High BP' && inputs.diet_restriction === 'Allergy' && inputs.exercise_level === 'Rarely') -> {"Health_Advisory":"Consult Doctor","Diet_Plan":"Allergy-Safe"}
+R0071: (inputs.health_condition === 'High BP' && inputs.diet_restriction === 'Allergy' && inputs.exercise_level === 'Moderate') -> {"Health_Advisory":"Consult Doctor","Diet_Plan":"Allergy-Safe"}
+R0072: (inputs.health_condition === 'High BP' && inputs.diet_restriction === 'Allergy' && inputs.exercise_level === 'Active') -> {"Health_Advisory":"Consult Doctor","Diet_Plan":"Allergy-Safe"}
+R0073: (inputs.health_condition === 'High Cholesterol' && inputs.diet_restriction === 'Allergy' && inputs.exercise_level === 'Rarely') -> {"Health_Advisory":"Consult Doctor","Diet_Plan":"Allergy-Safe"}
+R0074: (inputs.health_condition === 'High Cholesterol' && inputs.diet_restriction === 'Allergy' && inputs.exercise_level === 'Moderate') -> {"Health_Advisory":"Consult Doctor","Diet_Plan":"Allergy-Safe"}
+R0075: (inputs.health_condition === 'High Cholesterol' && inputs.diet_restriction === 'Allergy' && inputs.exercise_level === 'Active') -> {"Health_Advisory":"Consult Doctor","Diet_Plan":"Allergy-Safe"}
+R0076: (inputs.age < 25 && inputs.exercise_level === 'Moderate' && inputs.goal === 'Lose') -> {"Diet_Plan":"Calorie-Deficit"}
+R0077: (inputs.age < 25 && inputs.exercise_level === 'Active' && inputs.goal === 'Maintain') -> {"Diet_Plan":"Balanced"}
+R0078: (inputs.age < 25 && inputs.exercise_level === 'Active' && inputs.goal === 'Gain') -> {"Diet_Plan":"Calorie-Surplus"}
+R0079: (inputs.age < 25 && inputs.exercise_level === 'Active' && inputs.goal === 'Lose') -> {"Diet_Plan":"Calorie-Deficit"}
+R0080: (inputs.age >= 25 && inputs.age <= 40 && inputs.exercise_level === 'Moderate' && inputs.goal === 'Lose') -> {"Diet_Plan":"Calorie-Deficit"}
+R0081: (inputs.age >= 25 && inputs.age <= 40 && inputs.exercise_level === 'Active' && inputs.goal === 'Maintain') -> {"Diet_Plan":"Balanced"}
+R0082: (inputs.age >= 25 && inputs.age <= 40 && inputs.exercise_level === 'Active' && inputs.goal === 'Gain') -> {"Diet_Plan":"Calorie-Surplus"}
+R0083: (inputs.age >= 25 && inputs.age <= 40 && inputs.exercise_level === 'Active' && inputs.goal === 'Lose') -> {"Diet_Plan":"Calorie-Deficit"}
+R0084: (inputs.age > 40 && inputs.exercise_level === 'Moderate' && inputs.goal === 'Lose') -> {"Diet_Plan":"Calorie-Deficit"}
+R0085: (inputs.age > 40 && inputs.exercise_level === 'Active' && inputs.goal === 'Maintain') -> {"Diet_Plan":"Balanced"}
+R0086: (inputs.age > 40 && inputs.exercise_level === 'Active' && inputs.goal === 'Gain') -> {"Diet_Plan":"Calorie-Surplus"}
+R0087: (inputs.age > 40 && inputs.exercise_level === 'Active' && inputs.goal === 'Lose') -> {"Diet_Plan":"Calorie-Deficit"}
+R0088: (results.BMI_Category === 'Underweight' && inputs.stress_level === 'High' && inputs.budget_level === 'Low') -> {"Diet_Plan":"Stress-Control","Food_Type":"Low-Budget Meals"}
+R0089: (results.BMI_Category === 'Normal' && inputs.stress_level === 'High' && inputs.budget_level === 'Low') -> {"Diet_Plan":"Stress-Control","Food_Type":"Low-Budget Meals"}
+R0090: (results.BMI_Category === 'Overweight' && inputs.stress_level === 'High' && inputs.budget_level === 'Low') -> {"Diet_Plan":"Stress-Control","Food_Type":"Low-Budget Meals"}
+R0091: (results.BMI_Category === 'Obese' && inputs.stress_level === 'High' && inputs.budget_level === 'Low') -> {"Diet_Plan":"Stress-Control","Food_Type":"Low-Budget Meals"}
+R0092: (inputs.diet_restriction === 'None' && inputs.cooking_facility === 'Shared Kitchen' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals"}
+R0093: (inputs.diet_restriction === 'Vegan' && inputs.cooking_facility === 'Shared Kitchen' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals"}
+R0094: (inputs.diet_restriction === 'Vegan' && inputs.cooking_facility === 'Full Kitchen' && inputs.budget_level === 'Low') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0095: (inputs.diet_restriction === 'Vegan' && inputs.cooking_facility === 'Full Kitchen' && inputs.budget_level === 'Medium') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0096: (inputs.diet_restriction === 'Vegan' && inputs.cooking_facility === 'Full Kitchen' && inputs.budget_level === 'High') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0097: (inputs.diet_restriction === 'Vegetarian' && inputs.cooking_facility === 'Shared Kitchen' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals"}
+R0098: (inputs.diet_restriction === 'Vegetarian' && inputs.cooking_facility === 'Full Kitchen' && inputs.budget_level === 'Low') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0099: (inputs.diet_restriction === 'Vegetarian' && inputs.cooking_facility === 'Full Kitchen' && inputs.budget_level === 'Medium') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0100: (inputs.diet_restriction === 'Vegetarian' && inputs.cooking_facility === 'Full Kitchen' && inputs.budget_level === 'High') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0101: (inputs.diet_restriction === 'Allergy' && inputs.cooking_facility === 'No Kitchen' && inputs.budget_level === 'Low') -> {"Food_Type":"No-Cook Meals","Diet_Plan":"Allergy-Safe"}
+R0102: (inputs.diet_restriction === 'Allergy' && inputs.cooking_facility === 'No Kitchen' && inputs.budget_level === 'Medium') -> {"Food_Type":"No-Cook Meals","Diet_Plan":"Allergy-Safe"}
+R0103: (inputs.diet_restriction === 'Allergy' && inputs.cooking_facility === 'No Kitchen' && inputs.budget_level === 'High') -> {"Food_Type":"No-Cook Meals","Diet_Plan":"Allergy-Safe"}
+R0104: (inputs.diet_restriction === 'Allergy' && inputs.cooking_facility === 'Shared Kitchen' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals"}
+R0105: (inputs.health_condition === 'High BP' && inputs.budget_level === 'Low' && inputs.exercise_level === 'Rarely') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0106: (inputs.health_condition === 'High Cholesterol' && inputs.budget_level === 'Low' && inputs.exercise_level === 'Rarely') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0107: (results.BMI_Category === 'Underweight' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0108: (results.BMI_Category === 'Normal' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0109: (results.BMI_Category === 'Overweight' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0110: (results.BMI_Category === 'Obese' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0111: (results.BMI_Category === 'Underweight' && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0112: (results.BMI_Category === 'Underweight' && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0113: (results.BMI_Category === 'Normal' && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0114: (results.BMI_Category === 'Normal' && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0115: (results.BMI_Category === 'Overweight' && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0116: (results.BMI_Category === 'Overweight' && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0117: (results.BMI_Category === 'Obese' && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0118: (results.BMI_Category === 'Obese' && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0119: (results.BMI_Category === 'Underweight' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0120: (results.BMI_Category === 'Underweight' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0121: (results.BMI_Category === 'Normal' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0122: (results.BMI_Category === 'Normal' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0123: (results.BMI_Category === 'Overweight' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0124: (results.BMI_Category === 'Overweight' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0125: (results.BMI_Category === 'Obese' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Caution","Meal_Portion":"Small Frequent Meals"}
+R0126: (results.BMI_Category === 'Obese' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Caution","Meal_Portion":"Small Frequent Meals"}
+R0127: (results.BMI_Category === 'Underweight' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0128: (results.BMI_Category === 'Normal' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0129: (results.BMI_Category === 'Overweight' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0130: (results.BMI_Category === 'Obese' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0131: (inputs.goal === 'Maintain' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0132: (inputs.goal === 'Gain' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0133: (inputs.goal === 'Lose' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0134: (inputs.goal === 'Maintain' && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0135: (inputs.goal === 'Maintain' && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0136: (inputs.goal === 'Gain' && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0137: (inputs.goal === 'Gain' && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0138: (inputs.goal === 'Lose' && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0139: (inputs.goal === 'Lose' && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0140: (inputs.goal === 'Maintain' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0141: (inputs.goal === 'Maintain' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0142: (inputs.goal === 'Gain' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0143: (inputs.goal === 'Gain' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0144: (inputs.goal === 'Lose' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0145: (inputs.goal === 'Lose' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0146: (inputs.goal === 'Maintain' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0147: (inputs.goal === 'Gain' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0148: (inputs.goal === 'Lose' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0149: (inputs.goal === 'Gain' && inputs.exercise_level === 'Active') -> {"Diet_Plan":"Calorie-Surplus"}
+R0150: (inputs.goal === 'Lose' && inputs.exercise_level === 'Rarely') -> {"Diet_Plan":"Calorie-Deficit"}
+R0151: (inputs.age < 25 && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0152: (inputs.age >= 25 && inputs.age <= 40 && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0153: (inputs.age > 40 && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0154: (inputs.age < 25 && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0155: (inputs.age < 25 && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0156: (inputs.age >= 25 && inputs.age <= 40 && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0157: (inputs.age >= 25 && inputs.age <= 40 && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0158: (inputs.age > 40 && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0159: (inputs.age > 40 && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0160: (inputs.age < 25 && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0161: (inputs.age < 25 && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0162: (inputs.age >= 25 && inputs.age <= 40 && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0163: (inputs.age >= 25 && inputs.age <= 40 && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0164: (inputs.age > 40 && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0165: (inputs.age > 40 && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0166: (inputs.age < 25 && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0167: (inputs.age >= 25 && inputs.age <= 40 && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0168: (inputs.age > 40 && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0169: (inputs.stress_level === 'Low' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0170: (inputs.stress_level === 'Medium' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0171: (inputs.stress_level === 'High' && inputs.budget_level === 'Low') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Stress-Control"}
+R0172: (inputs.stress_level === 'Low' && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0173: (inputs.stress_level === 'Low' && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0174: (inputs.stress_level === 'Medium' && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0175: (inputs.stress_level === 'Medium' && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0176: (inputs.stress_level === 'High' && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0177: (inputs.stress_level === 'High' && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0178: (inputs.stress_level === 'Low' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0179: (inputs.stress_level === 'Low' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0180: (inputs.stress_level === 'Medium' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0181: (inputs.stress_level === 'Medium' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0182: (inputs.stress_level === 'High' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0183: (inputs.stress_level === 'High' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0184: (inputs.stress_level === 'Low' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0185: (inputs.stress_level === 'Medium' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0186: (inputs.stress_level === 'High' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0187: (inputs.budget_level === 'Low' && inputs.diet_restriction === 'None') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0188: (inputs.budget_level === 'Low' && inputs.diet_restriction === 'Vegan') -> {"Food_Type":"Plant-Based","Diet_Plan":"Plant-Based"}
+R0189: (inputs.budget_level === 'Low' && inputs.diet_restriction === 'Vegetarian') -> {"Food_Type":"Plant-Based","Diet_Plan":"Plant-Based"}
+R0190: (inputs.budget_level === 'Low' && inputs.diet_restriction === 'Allergy') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0191: (inputs.budget_level === 'Medium' && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0192: (inputs.budget_level === 'Medium' && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0193: (inputs.budget_level === 'High' && inputs.diet_restriction === 'Vegan') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0194: (inputs.budget_level === 'High' && inputs.diet_restriction === 'Vegetarian') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0195: (inputs.budget_level === 'Low' && inputs.health_condition === 'None') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0196: (inputs.budget_level === 'Low' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals","Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0197: (inputs.budget_level === 'Low' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals","Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0198: (inputs.budget_level === 'Medium' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0199: (inputs.budget_level === 'Medium' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0200: (inputs.budget_level === 'High' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0201: (inputs.budget_level === 'High' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0202: (inputs.budget_level === 'Low' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals","Diet_Plan":"Budget-Friendly"}
+R0203: (inputs.budget_level === 'Low' && inputs.cooking_facility === 'Shared Kitchen') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0204: (inputs.budget_level === 'Low' && inputs.cooking_facility === 'Full Kitchen') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0205: (inputs.budget_level === 'Medium' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0206: (inputs.budget_level === 'High' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0207: (inputs.budget_level === 'Low' && inputs.exercise_level === 'Rarely') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0208: (inputs.budget_level === 'Low' && inputs.exercise_level === 'Moderate') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0209: (inputs.budget_level === 'Low' && inputs.exercise_level === 'Active') -> {"Food_Type":"Low-Budget Meals","Diet_Plan":"Budget-Friendly"}
+R0210: (inputs.diet_restriction === 'None' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0211: (inputs.diet_restriction === 'None' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0212: (inputs.diet_restriction === 'Vegan' && inputs.health_condition === 'None') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0213: (inputs.diet_restriction === 'Vegan' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals","Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0214: (inputs.diet_restriction === 'Vegan' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals","Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0215: (inputs.diet_restriction === 'Vegetarian' && inputs.health_condition === 'None') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0216: (inputs.diet_restriction === 'Vegetarian' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals","Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0217: (inputs.diet_restriction === 'Vegetarian' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals","Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0218: (inputs.diet_restriction === 'Allergy' && inputs.health_condition === 'High BP') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0219: (inputs.diet_restriction === 'Allergy' && inputs.health_condition === 'High Cholesterol') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0220: (inputs.diet_restriction === 'None' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0221: (inputs.diet_restriction === 'Vegan' && inputs.cooking_facility === 'No Kitchen') -> {"Diet_Plan":"Plant-Based","Food_Type":"No-Cook Meals"}
+R0222: (inputs.diet_restriction === 'Vegan' && inputs.cooking_facility === 'Shared Kitchen') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0223: (inputs.diet_restriction === 'Vegan' && inputs.cooking_facility === 'Full Kitchen') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0224: (inputs.diet_restriction === 'Vegetarian' && inputs.cooking_facility === 'No Kitchen') -> {"Diet_Plan":"Plant-Based","Food_Type":"No-Cook Meals"}
+R0225: (inputs.diet_restriction === 'Vegetarian' && inputs.cooking_facility === 'Shared Kitchen') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0226: (inputs.diet_restriction === 'Vegetarian' && inputs.cooking_facility === 'Full Kitchen') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0227: (inputs.diet_restriction === 'Allergy' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0228: (inputs.diet_restriction === 'Vegan' && inputs.exercise_level === 'Rarely') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0229: (inputs.diet_restriction === 'Vegan' && inputs.exercise_level === 'Moderate') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0230: (inputs.diet_restriction === 'Vegan' && inputs.exercise_level === 'Active') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0231: (inputs.diet_restriction === 'Vegetarian' && inputs.exercise_level === 'Rarely') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0232: (inputs.diet_restriction === 'Vegetarian' && inputs.exercise_level === 'Moderate') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0233: (inputs.diet_restriction === 'Vegetarian' && inputs.exercise_level === 'Active') -> {"Diet_Plan":"Plant-Based","Food_Type":"Plant-Based"}
+R0234: (inputs.health_condition === 'None' && inputs.cooking_facility === 'No Kitchen') -> {"Food_Type":"No-Cook Meals"}
+R0235: (inputs.health_condition === 'High BP' && inputs.cooking_facility === 'No Kitchen') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals","Food_Type":"No-Cook Meals"}
+R0236: (inputs.health_condition === 'High BP' && inputs.cooking_facility === 'Shared Kitchen') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0237: (inputs.health_condition === 'High BP' && inputs.cooking_facility === 'Full Kitchen') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0238: (inputs.health_condition === 'High Cholesterol' && inputs.cooking_facility === 'No Kitchen') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals","Food_Type":"No-Cook Meals"}
+R0239: (inputs.health_condition === 'High Cholesterol' && inputs.cooking_facility === 'Shared Kitchen') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0240: (inputs.health_condition === 'High Cholesterol' && inputs.cooking_facility === 'Full Kitchen') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0241: (inputs.health_condition === 'High BP' && inputs.exercise_level === 'Rarely') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0242: (inputs.health_condition === 'High BP' && inputs.exercise_level === 'Moderate') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0243: (inputs.health_condition === 'High BP' && inputs.exercise_level === 'Active') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0244: (inputs.health_condition === 'High Cholesterol' && inputs.exercise_level === 'Rarely') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0245: (inputs.health_condition === 'High Cholesterol' && inputs.exercise_level === 'Moderate') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0246: (inputs.health_condition === 'High Cholesterol' && inputs.exercise_level === 'Active') -> {"Health_Advisory":"Consult Doctor","Meal_Portion":"Small Frequent Meals"}
+R0247: (inputs.cooking_facility === 'No Kitchen' && inputs.exercise_level === 'Rarely') -> {"Food_Type":"No-Cook Meals"}
+R0248: (inputs.cooking_facility === 'No Kitchen' && inputs.exercise_level === 'Moderate') -> {"Food_Type":"No-Cook Meals"}
+R0249: (inputs.cooking_facility === 'No Kitchen' && inputs.exercise_level === 'Active') -> {"Food_Type":"No-Cook Meals"}
+R0250: (inputs.stress_level === 'Medium') -> {"Diet_Plan":"Balanced"}
+R0251: (inputs.budget_level === 'Medium' && inputs.exercise_level === 'Moderate') -> {"Food_Type":"Assorted"}
+R0252: (inputs.age >= 25 && inputs.age <= 40 && inputs.cooking_facility === 'Full Kitchen') -> {"Food_Type":"Variety of Healthy Meals"}

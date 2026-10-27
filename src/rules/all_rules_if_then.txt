@@ -1,0 +1,271 @@
+IF health_condition == 'High BP' OR health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor'  # R6
+IF BMI_Category == 'Obese' OR age > 40 THEN Health_Advisory = 'Caution'  # R7
+IF stress_level == 'High' THEN Diet_Plan = 'Stress-Control'  # R13
+IF BMI_Category == 'Underweight' AND goal == 'Gain' THEN Diet_Plan = 'Calorie-Surplus'  # R8
+IF goal == 'Gain' OR (BMI_Category == 'Underweight' AND age < 30 THEN Diet_Plan = 'Calorie-Surplus'  # R8b
+IF BMI_Category == 'Overweight' OR BMI_Category == 'Obese') AND goal == 'Lose' THEN Diet_Plan = 'Calorie-Deficit'  # R9
+IF goal == 'Lose' OR health_condition == 'High Cholesterol' THEN Diet_Plan = 'Calorie-Deficit'  # R9b
+IF goal == 'Maintain' AND exercise_level == 'Rarely' AND age < 30 THEN Diet_Plan = 'Balanced'  # R10
+IF diet_restriction == 'Vegan' OR diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based'  # R11
+IF diet_restriction == 'Allergy' THEN Diet_Plan = 'Allergy-Safe'  # R12
+IF budget_level == 'Low' THEN Diet_Plan = 'Budget-Friendly'  # R14
+IF cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R15
+IF diet_restriction == 'Vegan' THEN Food_Type = 'Plant-Based'  # R16
+IF budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals'  # R17
+IF diet_restriction == 'Vegan' OR diet_restriction == 'Vegetarian') AND budget_level == 'Low' THEN Food_Type = 'Plant-Based'  # R16b
+IF Diet_Plan == 'Calorie-Surplus' THEN Meal_Portion = 'Larger Meals'  # R19
+IF Diet_Plan == 'Calorie-Deficit' OR health_condition == 'High BP' THEN Meal_Portion = 'Small Frequent Meals'  # R20
+IF Diet_Plan == 'Balanced' THEN Meal_Portion = 'Normal Meals'  # R21
+IF BMI_Category == 'Normal' AND stress_level == 'Low' THEN Meal_Portion = 'Normal Meals'  # R22
+IF BMI_Category == 'Underweight' AND goal == 'Maintain' THEN Diet_Plan = 'Balanced'  # R0001
+IF BMI_Category == 'Underweight' AND goal == 'Gain' THEN Diet_Plan = 'Calorie-Surplus'  # R0002
+IF BMI_Category == 'Underweight' AND goal == 'Lose' THEN Diet_Plan = 'Balanced'  # R0003
+IF BMI_Category == 'Normal' AND goal == 'Maintain' THEN Diet_Plan = 'Balanced'  # R0004
+IF BMI_Category == 'Normal' AND goal == 'Gain' THEN Diet_Plan = 'Balanced'  # R0005
+IF BMI_Category == 'Normal' AND goal == 'Lose' THEN Diet_Plan = 'Balanced'  # R0006
+IF BMI_Category == 'Overweight' AND goal == 'Maintain' THEN Diet_Plan = 'Balanced'  # R0007
+IF BMI_Category == 'Overweight' AND goal == 'Gain' THEN Diet_Plan = 'Balanced'  # R0008
+IF BMI_Category == 'Overweight' AND goal == 'Lose' THEN Diet_Plan = 'Balanced'  # R0009
+IF BMI_Category == 'Obese' AND goal == 'Maintain' THEN Diet_Plan = 'Balanced'  # R0010
+IF BMI_Category == 'Obese' AND goal == 'Gain' THEN Diet_Plan = 'Balanced'  # R0011
+IF BMI_Category == 'Obese' AND goal == 'Lose' THEN Diet_Plan = 'Calorie-Deficit'  # R0012
+IF age < 25 AND stress_level == 'High' THEN Diet_Plan = 'Stress-Control'  # R0013
+IF age >= 25 AND age <= 40 AND stress_level == 'Low' THEN Meal_Portion = 'Normal Meals'  # R0014
+IF age >= 25 AND age <= 40 AND stress_level == 'High' THEN Diet_Plan = 'Stress-Control'  # R0015
+IF age > 40 AND stress_level == 'High' THEN Diet_Plan = 'Stress-Control'  # R0016
+IF diet_restriction == 'None' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0017
+IF diet_restriction == 'Vegan' AND budget_level == 'Low' THEN Food_Type = 'Plant-Based' AND Diet_Plan = 'Plant-Based'  # R0018
+IF diet_restriction == 'Vegan' AND budget_level == 'Medium' THEN Food_Type = 'Plant-Based' AND Diet_Plan = 'Plant-Based'  # R0019
+IF diet_restriction == 'Vegan' AND budget_level == 'High' THEN Food_Type = 'Plant-Based' AND Diet_Plan = 'Plant-Based'  # R0020
+IF diet_restriction == 'Vegetarian' AND budget_level == 'Low' THEN Food_Type = 'Plant-Based' AND Diet_Plan = 'Plant-Based'  # R0021
+IF diet_restriction == 'Vegetarian' AND budget_level == 'Medium' THEN Food_Type = 'Plant-Based' AND Diet_Plan = 'Plant-Based'  # R0022
+IF diet_restriction == 'Vegetarian' AND budget_level == 'High' THEN Food_Type = 'Plant-Based' AND Diet_Plan = 'Plant-Based'  # R0023
+IF diet_restriction == 'Allergy' AND budget_level == 'Low' THEN Diet_Plan = 'Allergy-Safe' AND Food_Type = 'Low-Budget Meals'  # R0024
+IF diet_restriction == 'Allergy' AND budget_level == 'Medium' THEN Diet_Plan = 'Allergy-Safe'  # R0025
+IF diet_restriction == 'Allergy' AND budget_level == 'High' THEN Diet_Plan = 'Allergy-Safe'  # R0026
+IF health_condition == 'None' AND BMI_Category == 'Underweight' THEN Meal_Portion = 'Larger Meals'  # R0027
+IF cooking_facility == 'No Kitchen' AND budget_level == 'Low' THEN Food_Type = 'No-Cook Meals'  # R0028
+IF cooking_facility == 'No Kitchen' AND budget_level == 'Medium' THEN Food_Type = 'No-Cook Meals'  # R0029
+IF cooking_facility == 'No Kitchen' AND budget_level == 'High' THEN Food_Type = 'No-Cook Meals'  # R0030
+IF cooking_facility == 'Shared Kitchen' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals'  # R0031
+IF cooking_facility == 'Full Kitchen' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals'  # R0032
+IF cooking_facility == 'Full Kitchen' AND budget_level == 'High' THEN Food_Type = 'Variety of Healthy Meals'  # R0033
+IF exercise_level == 'Rarely' AND goal == 'Lose' THEN Diet_Plan = 'Calorie-Deficit'  # R0034
+IF exercise_level == 'Active' AND goal == 'Gain' THEN Diet_Plan = 'Calorie-Surplus'  # R0035
+IF budget_level == 'Low' AND stress_level == 'High' THEN Diet_Plan = 'Budget-Friendly'  # R0036
+IF health_condition == 'High BP' AND budget_level == 'Low' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0037
+IF diet_restriction == 'None' AND exercise_level == 'Active' THEN Diet_Plan = 'Balanced'  # R0038
+IF age < 18 THEN Diet_Plan = 'Balanced'  # R0039
+IF stress_level == 'High' THEN Diet_Plan = 'Stress-Control'  # R0040
+IF budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals'  # R0041
+IF BMI_Category == 'Underweight' AND goal == 'Gain' AND exercise_level == 'Active' THEN Diet_Plan = 'Calorie-Surplus'  # R0042
+IF BMI_Category == 'Obese' AND goal == 'Lose' AND exercise_level == 'Rarely' THEN Diet_Plan = 'Calorie-Deficit'  # R0043
+IF age >= 25 AND age <= 40 AND budget_level == 'Low' AND stress_level == 'High' THEN Diet_Plan = 'Stress-Control' AND Food_Type = 'Low-Budget Meals'  # R0044
+IF age > 40 AND budget_level == 'Low' AND stress_level == 'High' THEN Diet_Plan = 'Stress-Control' AND Food_Type = 'Low-Budget Meals'  # R0045
+IF health_condition == 'None' AND BMI_Category == 'Underweight' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0046
+IF health_condition == 'High BP' AND BMI_Category == 'Underweight' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0047
+IF health_condition == 'High BP' AND BMI_Category == 'Obese' AND cooking_facility == 'No Kitchen' THEN Health_Advisory = 'Caution' AND Meal_Portion = 'Small Frequent Meals'  # R0048
+IF health_condition == 'High BP' AND BMI_Category == 'Obese' AND cooking_facility == 'Shared Kitchen' THEN Health_Advisory = 'Caution' AND Meal_Portion = 'Small Frequent Meals'  # R0049
+IF health_condition == 'High BP' AND BMI_Category == 'Obese' AND cooking_facility == 'Full Kitchen' THEN Health_Advisory = 'Caution' AND Meal_Portion = 'Small Frequent Meals'  # R0050
+IF health_condition == 'High Cholesterol' AND BMI_Category == 'Underweight' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0051
+IF health_condition == 'High Cholesterol' AND BMI_Category == 'Obese' AND cooking_facility == 'No Kitchen' THEN Health_Advisory = 'Caution' AND Meal_Portion = 'Small Frequent Meals'  # R0052
+IF health_condition == 'High Cholesterol' AND BMI_Category == 'Obese' AND cooking_facility == 'Shared Kitchen' THEN Health_Advisory = 'Caution' AND Meal_Portion = 'Small Frequent Meals'  # R0053
+IF health_condition == 'High Cholesterol' AND BMI_Category == 'Obese' AND cooking_facility == 'Full Kitchen' THEN Health_Advisory = 'Caution' AND Meal_Portion = 'Small Frequent Meals'  # R0054
+IF stress_level == 'High' AND diet_restriction == 'Vegan' AND exercise_level == 'Rarely' THEN Diet_Plan = 'Stress-Control Plant-Based' AND Food_Type = 'Plant-Based'  # R0055
+IF stress_level == 'High' AND diet_restriction == 'Vegan' AND exercise_level == 'Moderate' THEN Diet_Plan = 'Stress-Control Plant-Based' AND Food_Type = 'Plant-Based'  # R0056
+IF stress_level == 'High' AND diet_restriction == 'Vegan' AND exercise_level == 'Active' THEN Diet_Plan = 'Stress-Control Plant-Based' AND Food_Type = 'Plant-Based'  # R0057
+IF stress_level == 'High' AND diet_restriction == 'Vegetarian' AND exercise_level == 'Rarely' THEN Diet_Plan = 'Stress-Control Plant-Based' AND Food_Type = 'Plant-Based'  # R0058
+IF stress_level == 'High' AND diet_restriction == 'Vegetarian' AND exercise_level == 'Moderate' THEN Diet_Plan = 'Stress-Control Plant-Based' AND Food_Type = 'Plant-Based'  # R0059
+IF stress_level == 'High' AND diet_restriction == 'Vegetarian' AND exercise_level == 'Active' THEN Diet_Plan = 'Stress-Control Plant-Based' AND Food_Type = 'Plant-Based'  # R0060
+IF BMI_Category == 'Underweight' AND goal == 'Gain' AND budget_level == 'High' THEN Diet_Plan = 'Calorie-Surplus' AND Food_Type = 'Variety of Healthy Meals'  # R0061
+IF BMI_Category == 'Obese' AND goal == 'Lose' AND budget_level == 'Low' THEN Diet_Plan = 'Calorie-Deficit' AND Food_Type = 'Low-Budget Meals'  # R0062
+IF age < 25 AND diet_restriction == 'Allergy' AND budget_level == 'Low' THEN Health_Advisory = 'Caution' AND Food_Type = 'Low-Budget Meals'  # R0063
+IF age >= 25 AND age <= 40 AND diet_restriction == 'Allergy' AND budget_level == 'Low' THEN Health_Advisory = 'Caution' AND Food_Type = 'Low-Budget Meals'  # R0064
+IF age > 40 AND diet_restriction == 'Allergy' AND budget_level == 'Low' THEN Health_Advisory = 'Caution' AND Food_Type = 'Low-Budget Meals'  # R0065
+IF goal == 'Gain' AND cooking_facility == 'Full Kitchen' AND budget_level == 'High' THEN Diet_Plan = 'Calorie-Surplus' AND Food_Type = 'Variety of Healthy Meals'  # R0066
+IF goal == 'Lose' AND cooking_facility == 'No Kitchen' AND budget_level == 'Low' THEN Diet_Plan = 'Calorie-Deficit' AND Food_Type = 'No-Cook Meals'  # R0067
+IF stress_level == 'High' AND exercise_level == 'Rarely' AND goal == 'Lose' THEN Diet_Plan = 'Stress-Control' AND Meal_Portion = 'Small Frequent Meals'  # R0068
+IF stress_level == 'High' AND exercise_level == 'Active' AND goal == 'Gain' THEN Diet_Plan = 'Calorie-Surplus'  # R0069
+IF health_condition == 'High BP' AND diet_restriction == 'Allergy' AND exercise_level == 'Rarely' THEN Health_Advisory = 'Consult Doctor' AND Diet_Plan = 'Allergy-Safe'  # R0070
+IF health_condition == 'High BP' AND diet_restriction == 'Allergy' AND exercise_level == 'Moderate' THEN Health_Advisory = 'Consult Doctor' AND Diet_Plan = 'Allergy-Safe'  # R0071
+IF health_condition == 'High BP' AND diet_restriction == 'Allergy' AND exercise_level == 'Active' THEN Health_Advisory = 'Consult Doctor' AND Diet_Plan = 'Allergy-Safe'  # R0072
+IF health_condition == 'High Cholesterol' AND diet_restriction == 'Allergy' AND exercise_level == 'Rarely' THEN Health_Advisory = 'Consult Doctor' AND Diet_Plan = 'Allergy-Safe'  # R0073
+IF health_condition == 'High Cholesterol' AND diet_restriction == 'Allergy' AND exercise_level == 'Moderate' THEN Health_Advisory = 'Consult Doctor' AND Diet_Plan = 'Allergy-Safe'  # R0074
+IF health_condition == 'High Cholesterol' AND diet_restriction == 'Allergy' AND exercise_level == 'Active' THEN Health_Advisory = 'Consult Doctor' AND Diet_Plan = 'Allergy-Safe'  # R0075
+IF age < 25 AND exercise_level == 'Moderate' AND goal == 'Lose' THEN Diet_Plan = 'Calorie-Deficit'  # R0076
+IF age < 25 AND exercise_level == 'Active' AND goal == 'Maintain' THEN Diet_Plan = 'Balanced'  # R0077
+IF age < 25 AND exercise_level == 'Active' AND goal == 'Gain' THEN Diet_Plan = 'Calorie-Surplus'  # R0078
+IF age < 25 AND exercise_level == 'Active' AND goal == 'Lose' THEN Diet_Plan = 'Calorie-Deficit'  # R0079
+IF age >= 25 AND age <= 40 AND exercise_level == 'Moderate' AND goal == 'Lose' THEN Diet_Plan = 'Calorie-Deficit'  # R0080
+IF age >= 25 AND age <= 40 AND exercise_level == 'Active' AND goal == 'Maintain' THEN Diet_Plan = 'Balanced'  # R0081
+IF age >= 25 AND age <= 40 AND exercise_level == 'Active' AND goal == 'Gain' THEN Diet_Plan = 'Calorie-Surplus'  # R0082
+IF age >= 25 AND age <= 40 AND exercise_level == 'Active' AND goal == 'Lose' THEN Diet_Plan = 'Calorie-Deficit'  # R0083
+IF age > 40 AND exercise_level == 'Moderate' AND goal == 'Lose' THEN Diet_Plan = 'Calorie-Deficit'  # R0084
+IF age > 40 AND exercise_level == 'Active' AND goal == 'Maintain' THEN Diet_Plan = 'Balanced'  # R0085
+IF age > 40 AND exercise_level == 'Active' AND goal == 'Gain' THEN Diet_Plan = 'Calorie-Surplus'  # R0086
+IF age > 40 AND exercise_level == 'Active' AND goal == 'Lose' THEN Diet_Plan = 'Calorie-Deficit'  # R0087
+IF BMI_Category == 'Underweight' AND stress_level == 'High' AND budget_level == 'Low' THEN Diet_Plan = 'Stress-Control' AND Food_Type = 'Low-Budget Meals'  # R0088
+IF BMI_Category == 'Normal' AND stress_level == 'High' AND budget_level == 'Low' THEN Diet_Plan = 'Stress-Control' AND Food_Type = 'Low-Budget Meals'  # R0089
+IF BMI_Category == 'Overweight' AND stress_level == 'High' AND budget_level == 'Low' THEN Diet_Plan = 'Stress-Control' AND Food_Type = 'Low-Budget Meals'  # R0090
+IF BMI_Category == 'Obese' AND stress_level == 'High' AND budget_level == 'Low' THEN Diet_Plan = 'Stress-Control' AND Food_Type = 'Low-Budget Meals'  # R0091
+IF diet_restriction == 'None' AND cooking_facility == 'Shared Kitchen' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals'  # R0092
+IF diet_restriction == 'Vegan' AND cooking_facility == 'Shared Kitchen' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals'  # R0093
+IF diet_restriction == 'Vegan' AND cooking_facility == 'Full Kitchen' AND budget_level == 'Low' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0094
+IF diet_restriction == 'Vegan' AND cooking_facility == 'Full Kitchen' AND budget_level == 'Medium' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0095
+IF diet_restriction == 'Vegan' AND cooking_facility == 'Full Kitchen' AND budget_level == 'High' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0096
+IF diet_restriction == 'Vegetarian' AND cooking_facility == 'Shared Kitchen' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals'  # R0097
+IF diet_restriction == 'Vegetarian' AND cooking_facility == 'Full Kitchen' AND budget_level == 'Low' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0098
+IF diet_restriction == 'Vegetarian' AND cooking_facility == 'Full Kitchen' AND budget_level == 'Medium' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0099
+IF diet_restriction == 'Vegetarian' AND cooking_facility == 'Full Kitchen' AND budget_level == 'High' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0100
+IF diet_restriction == 'Allergy' AND cooking_facility == 'No Kitchen' AND budget_level == 'Low' THEN Food_Type = 'No-Cook Meals' AND Diet_Plan = 'Allergy-Safe'  # R0101
+IF diet_restriction == 'Allergy' AND cooking_facility == 'No Kitchen' AND budget_level == 'Medium' THEN Food_Type = 'No-Cook Meals' AND Diet_Plan = 'Allergy-Safe'  # R0102
+IF diet_restriction == 'Allergy' AND cooking_facility == 'No Kitchen' AND budget_level == 'High' THEN Food_Type = 'No-Cook Meals' AND Diet_Plan = 'Allergy-Safe'  # R0103
+IF diet_restriction == 'Allergy' AND cooking_facility == 'Shared Kitchen' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals'  # R0104
+IF health_condition == 'High BP' AND budget_level == 'Low' AND exercise_level == 'Rarely' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0105
+IF health_condition == 'High Cholesterol' AND budget_level == 'Low' AND exercise_level == 'Rarely' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0106
+IF BMI_Category == 'Underweight' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0107
+IF BMI_Category == 'Normal' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0108
+IF BMI_Category == 'Overweight' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0109
+IF BMI_Category == 'Obese' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0110
+IF BMI_Category == 'Underweight' AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0111
+IF BMI_Category == 'Underweight' AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0112
+IF BMI_Category == 'Normal' AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0113
+IF BMI_Category == 'Normal' AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0114
+IF BMI_Category == 'Overweight' AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0115
+IF BMI_Category == 'Overweight' AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0116
+IF BMI_Category == 'Obese' AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0117
+IF BMI_Category == 'Obese' AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0118
+IF BMI_Category == 'Underweight' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0119
+IF BMI_Category == 'Underweight' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0120
+IF BMI_Category == 'Normal' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0121
+IF BMI_Category == 'Normal' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0122
+IF BMI_Category == 'Overweight' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0123
+IF BMI_Category == 'Overweight' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0124
+IF BMI_Category == 'Obese' AND health_condition == 'High BP' THEN Health_Advisory = 'Caution' AND Meal_Portion = 'Small Frequent Meals'  # R0125
+IF BMI_Category == 'Obese' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Caution' AND Meal_Portion = 'Small Frequent Meals'  # R0126
+IF BMI_Category == 'Underweight' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0127
+IF BMI_Category == 'Normal' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0128
+IF BMI_Category == 'Overweight' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0129
+IF BMI_Category == 'Obese' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0130
+IF goal == 'Maintain' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0131
+IF goal == 'Gain' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0132
+IF goal == 'Lose' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0133
+IF goal == 'Maintain' AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0134
+IF goal == 'Maintain' AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0135
+IF goal == 'Gain' AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0136
+IF goal == 'Gain' AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0137
+IF goal == 'Lose' AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0138
+IF goal == 'Lose' AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0139
+IF goal == 'Maintain' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0140
+IF goal == 'Maintain' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0141
+IF goal == 'Gain' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0142
+IF goal == 'Gain' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0143
+IF goal == 'Lose' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0144
+IF goal == 'Lose' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0145
+IF goal == 'Maintain' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0146
+IF goal == 'Gain' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0147
+IF goal == 'Lose' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0148
+IF goal == 'Gain' AND exercise_level == 'Active' THEN Diet_Plan = 'Calorie-Surplus'  # R0149
+IF goal == 'Lose' AND exercise_level == 'Rarely' THEN Diet_Plan = 'Calorie-Deficit'  # R0150
+IF age < 25 AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0151
+IF age >= 25 AND age <= 40 AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0152
+IF age > 40 AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0153
+IF age < 25 AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0154
+IF age < 25 AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0155
+IF age >= 25 AND age <= 40 AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0156
+IF age >= 25 AND age <= 40 AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0157
+IF age > 40 AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0158
+IF age > 40 AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0159
+IF age < 25 AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0160
+IF age < 25 AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0161
+IF age >= 25 AND age <= 40 AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0162
+IF age >= 25 AND age <= 40 AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0163
+IF age > 40 AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0164
+IF age > 40 AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0165
+IF age < 25 AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0166
+IF age >= 25 AND age <= 40 AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0167
+IF age > 40 AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0168
+IF stress_level == 'Low' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0169
+IF stress_level == 'Medium' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0170
+IF stress_level == 'High' AND budget_level == 'Low' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Stress-Control'  # R0171
+IF stress_level == 'Low' AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0172
+IF stress_level == 'Low' AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0173
+IF stress_level == 'Medium' AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0174
+IF stress_level == 'Medium' AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0175
+IF stress_level == 'High' AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0176
+IF stress_level == 'High' AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0177
+IF stress_level == 'Low' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0178
+IF stress_level == 'Low' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0179
+IF stress_level == 'Medium' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0180
+IF stress_level == 'Medium' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0181
+IF stress_level == 'High' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0182
+IF stress_level == 'High' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0183
+IF stress_level == 'Low' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0184
+IF stress_level == 'Medium' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0185
+IF stress_level == 'High' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0186
+IF budget_level == 'Low' AND diet_restriction == 'None' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0187
+IF budget_level == 'Low' AND diet_restriction == 'Vegan' THEN Food_Type = 'Plant-Based' AND Diet_Plan = 'Plant-Based'  # R0188
+IF budget_level == 'Low' AND diet_restriction == 'Vegetarian' THEN Food_Type = 'Plant-Based' AND Diet_Plan = 'Plant-Based'  # R0189
+IF budget_level == 'Low' AND diet_restriction == 'Allergy' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0190
+IF budget_level == 'Medium' AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0191
+IF budget_level == 'Medium' AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0192
+IF budget_level == 'High' AND diet_restriction == 'Vegan' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0193
+IF budget_level == 'High' AND diet_restriction == 'Vegetarian' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0194
+IF budget_level == 'Low' AND health_condition == 'None' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0195
+IF budget_level == 'Low' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals' AND Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0196
+IF budget_level == 'Low' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals' AND Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0197
+IF budget_level == 'Medium' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0198
+IF budget_level == 'Medium' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0199
+IF budget_level == 'High' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0200
+IF budget_level == 'High' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0201
+IF budget_level == 'Low' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals' AND Diet_Plan = 'Budget-Friendly'  # R0202
+IF budget_level == 'Low' AND cooking_facility == 'Shared Kitchen' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0203
+IF budget_level == 'Low' AND cooking_facility == 'Full Kitchen' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0204
+IF budget_level == 'Medium' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0205
+IF budget_level == 'High' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0206
+IF budget_level == 'Low' AND exercise_level == 'Rarely' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0207
+IF budget_level == 'Low' AND exercise_level == 'Moderate' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0208
+IF budget_level == 'Low' AND exercise_level == 'Active' THEN Food_Type = 'Low-Budget Meals' AND Diet_Plan = 'Budget-Friendly'  # R0209
+IF diet_restriction == 'None' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0210
+IF diet_restriction == 'None' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0211
+IF diet_restriction == 'Vegan' AND health_condition == 'None' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0212
+IF diet_restriction == 'Vegan' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals' AND Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0213
+IF diet_restriction == 'Vegan' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals' AND Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0214
+IF diet_restriction == 'Vegetarian' AND health_condition == 'None' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0215
+IF diet_restriction == 'Vegetarian' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals' AND Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0216
+IF diet_restriction == 'Vegetarian' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals' AND Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0217
+IF diet_restriction == 'Allergy' AND health_condition == 'High BP' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0218
+IF diet_restriction == 'Allergy' AND health_condition == 'High Cholesterol' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0219
+IF diet_restriction == 'None' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0220
+IF diet_restriction == 'Vegan' AND cooking_facility == 'No Kitchen' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'No-Cook Meals'  # R0221
+IF diet_restriction == 'Vegan' AND cooking_facility == 'Shared Kitchen' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0222
+IF diet_restriction == 'Vegan' AND cooking_facility == 'Full Kitchen' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0223
+IF diet_restriction == 'Vegetarian' AND cooking_facility == 'No Kitchen' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'No-Cook Meals'  # R0224
+IF diet_restriction == 'Vegetarian' AND cooking_facility == 'Shared Kitchen' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0225
+IF diet_restriction == 'Vegetarian' AND cooking_facility == 'Full Kitchen' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0226
+IF diet_restriction == 'Allergy' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0227
+IF diet_restriction == 'Vegan' AND exercise_level == 'Rarely' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0228
+IF diet_restriction == 'Vegan' AND exercise_level == 'Moderate' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0229
+IF diet_restriction == 'Vegan' AND exercise_level == 'Active' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0230
+IF diet_restriction == 'Vegetarian' AND exercise_level == 'Rarely' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0231
+IF diet_restriction == 'Vegetarian' AND exercise_level == 'Moderate' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0232
+IF diet_restriction == 'Vegetarian' AND exercise_level == 'Active' THEN Diet_Plan = 'Plant-Based' AND Food_Type = 'Plant-Based'  # R0233
+IF health_condition == 'None' AND cooking_facility == 'No Kitchen' THEN Food_Type = 'No-Cook Meals'  # R0234
+IF health_condition == 'High BP' AND cooking_facility == 'No Kitchen' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals' AND Food_Type = 'No-Cook Meals'  # R0235
+IF health_condition == 'High BP' AND cooking_facility == 'Shared Kitchen' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0236
+IF health_condition == 'High BP' AND cooking_facility == 'Full Kitchen' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0237
+IF health_condition == 'High Cholesterol' AND cooking_facility == 'No Kitchen' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals' AND Food_Type = 'No-Cook Meals'  # R0238
+IF health_condition == 'High Cholesterol' AND cooking_facility == 'Shared Kitchen' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0239
+IF health_condition == 'High Cholesterol' AND cooking_facility == 'Full Kitchen' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0240
+IF health_condition == 'High BP' AND exercise_level == 'Rarely' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0241
+IF health_condition == 'High BP' AND exercise_level == 'Moderate' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0242
+IF health_condition == 'High BP' AND exercise_level == 'Active' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0243
+IF health_condition == 'High Cholesterol' AND exercise_level == 'Rarely' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0244
+IF health_condition == 'High Cholesterol' AND exercise_level == 'Moderate' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0245
+IF health_condition == 'High Cholesterol' AND exercise_level == 'Active' THEN Health_Advisory = 'Consult Doctor' AND Meal_Portion = 'Small Frequent Meals'  # R0246
+IF cooking_facility == 'No Kitchen' AND exercise_level == 'Rarely' THEN Food_Type = 'No-Cook Meals'  # R0247
+IF cooking_facility == 'No Kitchen' AND exercise_level == 'Moderate' THEN Food_Type = 'No-Cook Meals'  # R0248
+IF cooking_facility == 'No Kitchen' AND exercise_level == 'Active' THEN Food_Type = 'No-Cook Meals'  # R0249
+IF stress_level == 'Medium' THEN Diet_Plan = 'Balanced'  # R0250
+IF budget_level == 'Medium' AND exercise_level == 'Moderate' THEN Food_Type = 'Assorted'  # R0251
+IF age >= 25 AND age <= 40 AND cooking_facility == 'Full Kitchen' THEN Food_Type = 'Variety of Healthy Meals'  # R0252
